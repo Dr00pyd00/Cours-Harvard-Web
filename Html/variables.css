@@ -1,0 +1,27 @@
+@charset "UTF-8";
+ul {
+  color: rgb(130, 1, 1);
+  font-size: 14px;
+}
+
+ol {
+  font-size: 18px;
+  color: rgb(130, 1, 1);
+}
+
+/*  
+
+-avoir dl 'sass' 
+
+- dans la console : 
+    $ sass variables.scss:variables.css    ===> ca transforme en css et on link ça.
+
+
+    AUSSI :
+        on peut automatiser la compilation dans une console avec '--watch' ::after
+        $ sass --watch variables.scss:variables.css
+
+        ==> ca met a jour en continu
+*/
+
+/*# sourceMappingURL=variables.css.map */

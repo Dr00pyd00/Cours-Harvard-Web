@@ -1,0 +1,90 @@
+
+1/ creer un dépot sur github
+
+2/ Il faut passer sur SSH : generer une clé sur son ordi si pas deja fait :
+	keys => $ ssh-keygen -t ed25519 -C 'ton@email.com'
+				-t 25519: type de la clé (chiffrage?)
+				-C commentaire (email pour s'y retrouver)
+			# ca va te demander d'entrer un chemin , Enter pour par defaut
+			# ca demande un mdp , Enter pour ne pas en mettre
+		### Localisation des keys : ~/ssh
+
+
+3/ Aller dans githud et associer la clé.
+ 
+
+4/ Teste la connection avce github :
+	$ ssh -T git@github.com
+		==> renvoie Hi droopy etc 
+
+
+5/ Utliser SSH pour faire un clone :
+	==> git clone git@github.com:Dr00pyd00/hello.git
+
+ 
+6/ Selectionner ce que l'on veut sauver:
+	$ git add <file name>  
+
+
+7/ Faire le commit (la vrai sauvergade) :
+	$ git commit -m 'message'
+		==> description de ce que tu as changer.
+	
+		!! RACCOURCI: on peut fusionner add et commit avec -a dans commit:
+			$ git commit -am 'message'
+
+8/ Mettre son repo local en ligne:
+	$ git push
+		envoie tout sur le repo github!
+
+
+9/ Recuperer les modifs sur le repo github :
+	$ git pull 
+
+
+10/ Checker toutes les modifs :
+	$ git log
+
+11/ git status 
+
+
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+GIT RESET:
+
+	$ git reset --hard  : supprime tout ce que je n'ai pas encore commit.
+
+	$ git reset --hard <commit> : supprime tout les commits  et modifs APRES  <commit>
+					=> reprend au comme si c'etait le debut.
+					   supprime les fichier dans 'add' 
+
+
+	$ git reset --hard origin/master : reinitialise le dossier local, il devient la copie du depot github.
+					=> supp les changements non comittes.
+					=> supp les commits locaux non 'git push'
+				
+--------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------
+BRANCHS:
+
+	# HEAD : est un pointeur qui indique sur quel branc on est
+	
+	$ git branch :montre toutes les branch et te dit ou tu es situé   => *main (exemple)
+
+	$ git checkout truc  : permet de switch de branch  => git checkout master (exemple)
+
+
+	$ git checkout -b style :   # git checkout => commande pour changer de branche
+				    # -b => raccourci pour creer une nouvelle branche et s'y positionner
+				    # puis on donne le nom de la nouvelle branch ici 'style'
+
+
+	
+
+	MERGE :
+		# je suis sur branch main:
+			$ git merge style : je fusionne la branch style a la branche main sur laquelle je suis !
+		
+
+
+	
