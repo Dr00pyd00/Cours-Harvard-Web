@@ -12,4 +12,4 @@ def greet(request, name):
     ctx = {'name':name.capitalize()}
     return render(request, 'hello/greet.html', ctx)
 
-# test
+# test ajout git
