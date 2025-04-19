@@ -9,4 +9,7 @@ def index(request):
 
 
 def greet(request, name):
-    return HttpResponse(f'Hello, {name.title()} !')
+    ctx = {'name':name.capitalize()}
+    return render(request, 'hello/greet.html', ctx)
+
+# test
