@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>couleurs</title>
+
+
+    <script>
+
+        // truc pour changer les couleurs :
+            document.addEventListener('DOMContentLoaded', function() {
+                
+                document.querySelector('#red').onclick = function() {
+                    document.querySelector('body').style.color = 'red';
+                }
+
+                document.querySelector('#green').onclick = function () {
+                    document.querySelector('body').style.color = 'green';
+                }
+
+                document.querySelector('#blue').onclick = function () {
+                    document.querySelector('body').style.color = 'blue';
+                }
+
+            });
+
+        // truc pour mettre ton nom :
+            document.addEventListener('DOMContentLoaded', function() {
+                document.querySelector('#form_nom').onsubmit = function () {
+                    const name = document.querySelector('#name').value;
+                    alert(`Hello ${name} !!!`)
+                }
+            })
+
+
+
+    </script>
+</head>
+<body>
+    <h1>Bonjour</h1>
+
+    <p>
+        Je teste un paragraphe!
+    </p>
+
+    <ul>
+        <li>item1</li>
+        <li>item2</li>
+        <li>item3</li>
+    </ul>
+
+    <hr>
+
+    <button id="red">Red</button>
+    <button id="blue">Blue</button>
+    <button id="green">Green</button>
+
+    <hr>
+
+
+    <form action="" id="form_nom">
+        <input type="text" name="" id="name" placeholder="ton nom...">
+        <input type="submit" value="envoi" name="" id="">
+    </form>
+    
+</body>
+</html>
