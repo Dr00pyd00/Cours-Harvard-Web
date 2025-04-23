@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Test</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // ajouter un:
+            let counter = 0;
+            document.querySelector('#count').onclick = function() {
+
+                counter++;
+                document.querySelector('#compteur').innerHTML = counter;
+                ChangeColor();
+
+            }
+            // enlever un:
+            document.querySelector('#uncount').onclick = function() {
+                counter--;
+                document.querySelector('#compteur').innerHTML = counter;
+                ChangeColor();
+            }
+
+
+            function ChangeColor() {
+                if (counter % 2 === 0) {
+                    document.querySelector('h1').style.color = 'red';
+                } else {
+                    document.querySelector('h1').style.color = 'black';
+                }
+            }
+
+        }
+        )
+
+
+        // truc avec le nom a remplir :
+        document.addEventListener('DOMContentLoaded', function() {
+
+            alert('Bienvenue sur mon site !')
+
+            document.querySelector('#subnom').onclick = function () {
+                const nom = document.querySelector('#nom').value;
+                if (nom === '') {
+                    document.querySelector('#phrase').innerHTML = `Tu n'as pas rempli le formulaire :/ `
+
+
+                }else {
+                    document.querySelector('#phrase').innerHTML = `Salut à toi ${nom} ! Tu vois je connais ton nom !`
+
+                }
+            
+            }
+
+
+
+
+
+
+
+        })
+
+    </script>
+
+
+
+
+</head>
+<body>
+    <h1>Ici on compte!</h1>
+    <hr>
+    <div id="compteur">0</div>
+    <button id="count">+1</button>
+    <button id="uncount">-1</button>
+    <p>
+        Si c'est pair ca affiche rouge , sinon noir !
+    </p>
+
+
+    <hr>
+    <h1>Rentre ton nom et je t'inclue dans une phrase !</h1>
+
+    <input type="text"  id="nom" placeholder="ton nom...">
+    <input type="submit" id="subnom">
+
+    <p id="phrase">
+    </p>
+
+    
+</body>
+</html>
