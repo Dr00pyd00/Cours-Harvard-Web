@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Bureau de change</title>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // afficher tout les choix possibles de monnaies :
+
+            fetch('https://open.er-api.com/v6/latest/EUR')
+            .then( response => response.json())
+            .then(data => {
+                Object.entries(data.rates).forEach(function([monnaie, taux]) {
+
+                    const addOption = document.createElement('option');
+                    addOption.innerHTML = `${monnaie}`;
+                    addOption.value = monnaie;
+
+                    // j'ajoute au deux selecteurs :
+                    document.querySelector('#monnaie-actuelle').append(addOption.cloneNode(true));
+                    document.querySelector('#monnaie-voulu').append(addOption.cloneNode(true));
+                    });   
+                });
+
+            });
+
+
+            // quand j'appuie sur conversion:
+            document.querySelector('#conversion').onclick = function() {
+
+                const monnaie1 = document.querySelector('#monnaie-actuelle').value;
+                const monnaie2 = document.querySelector('#monnais-voulu').value;
+                const somme1 = document.querySelector('#somme').value;
+
+                // const result = 
+
+                // TODO gerer le pb que le fetch doit etre fait pour la selection voulu !
+                
+
+            }
+
+
+
+
+
+
+
+    
+
+
+
+
+    </script>
+</head>
+<body>
+    <h1>Convertisseur de monnaies:</h1>
+
+
+    <label for="monnaie-actuelle">Ta monnaie actuelle:</label>
+    <select name="" id="monnaie-actuelle">
+        <option value=""></option>
+    </select>
+    <br>
+
+
+    <label for="somme">Ta somme :</label>
+    <input type="number" name="" id="somme">
+
+    <br>
+
+    <label for="monnaie-voulu">Ta monnaie actuelle:</label>
+    <select name="" id="monnaie-voulu">
+        <option value=""></option>
+    </select>
+
+    <br>
+
+    <button id="conversion">Conversion !</button>
+
+    <div id="result"></div>
+
+
+    
+</body>
+</html>
