@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Tasks</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // par defaut le submit button sera desactivé / activer seulement quand y'aura du texte:
+            document.querySelector('#submit').disabled = true;
+
+            // je vais chercher l'inp text et dire que dé qu'une touche y ai relacher, on remet le button submit:
+            document.querySelector('#task').onkeyup = function() {
+                if (document.querySelector('#task').value.length <= 0 ) {
+                    document.querySelector('#submit').disabled = true;
+
+                } else {
+                    document.querySelector('#submit').disabled = false;
+                }
+            }
+
+
+
+            // lancer quand on appuie sur submit:
+            document.querySelector('form').onsubmit = () => {
+
+                const task = document.querySelector('#task').value;
+                console.log(task);
+
+                // j'ai ma task maitenant je vais creer un element pour le mettre dedans:
+                const li = document.createElement('li');
+                li.innerHTML = task;
+
+                // je vais mettre cette element DANS l'element 'ul' pour faire une vrai liste:
+                document.querySelector('#tasks').append(li)
+
+
+                // vider l'inpu text:
+                document.querySelector('#task').value = '';
+
+                // je redisabled le button pour la suite après une requete:
+                document.querySelector('#submit').disabled = true;
+
+                // ne pas submit la form au server et reload la page 
+                // faire tout coté client :
+                return false;
+            }
+
+
+
+        });
+
+
+
+
+    </script>
+</head>
+<body>
+    <h1>Tasks</h1>
+
+    <ul id="tasks">
+
+    </ul>
+
+    <form action="" id="">
+        <input type="text" id="task" placeholder="New Task">
+        <input type="submit" name="" id="submit">
+    </form>
+    
+</body>
+</html>

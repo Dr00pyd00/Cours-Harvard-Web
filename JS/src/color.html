@@ -13,18 +13,36 @@
                     document.querySelector('#hello').style.color = button.dataset.color
                 }
             })
-
-
-
         }
     );
+
+    // pour le system select:
+        document.addEventListener('DOMContentLoaded', () => {
+
+            document.querySelector('select').onchange = function() {
+
+                document.querySelector('#hello').style.color = this.value;
+            }
+
+        });
+
+
+
     </script>
 
 </head>
 <body>
     <h1 id="hello">Hello!</h1>
-    <button data-color="red">Red</button>
+    <!-- <button data-color="red">Red</button>
     <button data-color="blue">blue</button>
-    <button data-color="green">Green</button>
+    <button data-color="green">Green</button> -->
+
+    <!-- je le fais avec  un selecteur  -->
+     <select name="" id="">
+        <option value="black">Black</option>
+        <option value="red">Red</option>
+        <option value="green">Green</option>
+        <option value="blue">Blue</option>
+     </select>
 </body>
 </html>
