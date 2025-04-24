@@ -5,49 +5,61 @@
     <title>Bureau de change</title>
 
     <script>
+
+
+
         document.addEventListener('DOMContentLoaded', () => {
 
             // afficher tout les choix possibles de monnaies :
 
             fetch('https://open.er-api.com/v6/latest/EUR')
+            // la je check le flux initial de données :
+            .then(httptruc => {
+                console.log(httptruc)
+                return httptruc; // je return le meme truc pour que le then suivant le prenne :
+            })
             .then( response => response.json())
             .then(data => {
                 Object.entries(data.rates).forEach(function([monnaie, taux]) {
 
                     const addOption = document.createElement('option');
-                    addOption.innerHTML = `${monnaie}`;
+                    addOption.textContent = `${monnaie}`;
                     addOption.value = monnaie;
 
                     // j'ajoute au deux selecteurs :
                     document.querySelector('#monnaie-actuelle').append(addOption.cloneNode(true));
                     document.querySelector('#monnaie-voulu').append(addOption.cloneNode(true));
-                    });   
-                });
-
+                });   
             });
 
+            
 
-            // quand j'appuie sur conversion:
-            document.querySelector('#conversion').onclick = function() {
+                            // quand j'appuie sur conversion:
+                            document.querySelector('#conversion').onclick = function() {
 
                 const monnaie1 = document.querySelector('#monnaie-actuelle').value;
-                const monnaie2 = document.querySelector('#monnais-voulu').value;
-                const somme1 = document.querySelector('#somme').value;
+                const monnaie2 = document.querySelector('#monnaie-voulu').value;
+                const somme1 = parseFloat(document.querySelector('#somme').value);
 
                 // const result = 
 
                 // TODO gerer le pb que le fetch doit etre fait pour la selection voulu !
-                
+                fetch(`https://open.er-api.com/v6/latest/${monnaie1}`)
+                .then(response => response.json())
+                .then(data => {
+  
+                    const taux= data.rates[monnaie2];
 
-            }
+                    const result = somme1 * taux;
 
+                    document.querySelector('#result').innerHTML = `conversion: ${somme1} ${monnaie1} ==> ${result.toFixed(2)} ${monnaie2}`
 
+                });
 
+                };
 
+        });
 
-
-
-    
 
 
 
@@ -70,7 +82,7 @@
 
     <br>
 
-    <label for="monnaie-voulu">Ta monnaie actuelle:</label>
+    <label for="monnaie-voulu">La monnaie de conversion:</label>
     <select name="" id="monnaie-voulu">
         <option value=""></option>
     </select>
