@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Document</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+
+            if (!localStorage.getItem('count')) {
+                localStorage.setItem('count', 0);
+            }
+
+
+
+            document.querySelector('h2').innerHTML = localStorage.getItem('count')
+
+            let count = localStorage.getItem('count');
+
+            document.querySelector('#ajout').onclick = () =>  {
+
+                count++;
+                document.querySelector('h2').innerHTML = count;
+                localStorage.setItem('count', count);
+
+            }
+
+
+            // le reset:
+
+            document.querySelector('#reset').onclick = () => {
+                // mise a jour du storage
+                localStorage.setItem('count', 0);
+                count =0;
+                // mise a jour du h2:
+                document.querySelector('h2').innerHTML = 0;
+            }
+
+
+
+
+
+
+
+
+        })
+
+
+    </script>
+</head>
+<body>
+    <h1>Comptage:</h1>
+
+    <h2></h2>
+
+    <button id="ajout">+1 </button>
+    <button id="reset">Reset</button>
+</body>
+</html>
